@@ -20,8 +20,8 @@ if (isset($_POST['submit'])) {
     }
     // Если нет ошибок, то добавляем в БД нового пользователя
     if (count($err) == 0) {
-        registration($conn, $_POST['login'], md5(md5(trim($_POST['password']))));
-        header("Location: ../index.php");
+        registration($conn, $_POST['login'], base64_encode($_POST['password']));
+        header("Location: ../admin.php");
     } else {
         foreach ($err AS $error) {
             print $error;

@@ -77,10 +77,12 @@ require_once 'dao/functions.php';
             </div>
         </div>
 
-        <a href="/pass_update.php" class="button">Поменять пароль</a>
+        <a href="<?
+                    echo iconv("cp1251","utf-8","/pass_update.php?room=".$_COOKIE['room'])
+                 ?>
+                " class="button">Поменять пароль</a>
 
         <a href="/src/out.php" class="button" name="logout" type="submit">Выйти</a>
-        <a href="/register.php" class="button" type="submit">Регистрация</a>
 
     </section>
     <section id="content-tab2">

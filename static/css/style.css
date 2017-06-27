@@ -78,7 +78,6 @@ span {
 }
 
 #login {
-    width: 320px;
     margin: auto;
     padding-bottom: 15px;
 }
@@ -136,6 +135,9 @@ footer {
 }
 
 .select{
-    width: 318px;
     height: 32px;
 }
+
+
+
+

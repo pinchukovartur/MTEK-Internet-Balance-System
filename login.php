@@ -13,16 +13,23 @@ require_once 'src/log.php';
     </head>
 <body>
 
-
 <div class="container mlogin">
     <div id="login">
         <h1>Вход</h1>
+        <?
+        foreach ($err AS $error) {
+            print $error;
+        }
+        ?>
         <form action="" id="loginform" method="post" name="loginform">
             <p><label for="user_login">Номер комнаты<br>
                     <? $rooms = get_rooms($conn); ?>
-                    <select class="select" id="login" name="login" size="1" type="text" value="">
+                    <input class="input" type='text' id='rez' name="login"/>
+                    <select class="select" id="login" size="1" onchange="document.getElementById('rez').value=value">
                         <?php foreach ($rooms as $room): ?>
-                            <option><?= iconv("cp1251","utf-8",$room["room"]) ?></option>
+                            <option value = "<?= iconv("cp1251","utf-8",$room["room"]) ?>">
+                                <?= iconv("cp1251","utf-8",$room["room"]) ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </label></p>
@@ -32,8 +39,11 @@ require_once 'src/log.php';
             Не прикреплять к IP(не безопасно) <input type="checkbox" name="not_attach_ip"><br>
             <p class="submit"><input class="button" name="submit" type="submit" value="Войти"></p>
 
-            <p class="regtext">Еще не зарегистрированы? <a href="register.php">Регистрация</a>!</p>
         </form>
     </div>
 </div>
+
+
+
+
 <?php include 'static/includes/footer.html';

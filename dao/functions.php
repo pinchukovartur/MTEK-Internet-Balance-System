@@ -1,6 +1,6 @@
 <?php
 function get_rooms($conn){
-    $sql = "select * from room";
+    $sql = "select * from room WHERE room.room != 'admin'";
     $stmt = sqlsrv_query($conn,$sql);
     if($stmt === false){
         die(print_r(sqlsrv_errors(),true));
@@ -86,6 +86,30 @@ function get_stat($conn, $room_number){
 
 function update_password($conn,$room_number,$new_pass){
     $sql = "UPDATE room SET pass='".$new_pass."' where room='".$room_number."';";
+    $stmt = sqlsrv_query($conn,$sql);
+    if($stmt === false){
+        die(print_r(sqlsrv_errors(),true));
+    }
+}
+
+function update_number_of_attempts($conn,$room_number,$number_of_attempts){
+    $sql = "UPDATE room SET  room.number_of_attempts='".$number_of_attempts."' where room='".$room_number."';";
+    $stmt = sqlsrv_query($conn,$sql);
+    if($stmt === false){
+        die(print_r(sqlsrv_errors(),true));
+    }
+}
+
+function update_authorization_date($conn,$room_number,$authorization_date){
+    $sql = "UPDATE room SET  room.authorization_date='".$authorization_date->format("d-m-Y H:i:s")."' where room='".$room_number."';";
+    $stmt = sqlsrv_query($conn,$sql);
+    if($stmt === false){
+        die(print_r(sqlsrv_errors(),true));
+    }
+}
+
+function update_ip($conn,$room_number,$ip){
+    $sql = "UPDATE room SET  room.user_ip='".$ip."' where room='".$room_number."';";
     $stmt = sqlsrv_query($conn,$sql);
     if($stmt === false){
         die(print_r(sqlsrv_errors(),true));

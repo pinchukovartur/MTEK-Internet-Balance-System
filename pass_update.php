@@ -17,11 +17,6 @@ header("Content-Type: text/html; charset=utf-8;");
         <h1>Смена пароля</h1>
         <form action="pass_update.php" id="registerform" method="post">
             <p>
-                <label for="user_login">Номер комнаты<br>
-                    <input class="input" id="login" name="room"size="32"  type="text" value="">
-                </label>
-            </p>
-            <p>
                 <label for="old_pass">Старый пароль<br>
                     <input class="input" id="password" name="old_password"size="32"   type="password" value="">
                 </label>
@@ -30,6 +25,7 @@ header("Content-Type: text/html; charset=utf-8;");
                 <label for="new_pass">Новый пароль<br>
                     <input class="input" id="password" name="new_password"size="32"   type="password" value="">
                 </label>
+                <input type="hidden" name="room" value="<?echo $_GET['room']?>"
             </p>
             <p class="submit"><input class="button" id="submit" name= "update_pass" type="submit" value="Обновить"></p>
         </form>
